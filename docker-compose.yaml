@@ -1,0 +1,23 @@
+version: '3'
+
+
+services:
+  app:
+    container_name: api-frete-rapido
+    build: .
+    ports:
+      - 3030:3030
+    volumes:
+      - .:/home/app
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.docker/pg/init-db.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      - ./.docker/pg/dbdata:/var/lib/postgresql/data
