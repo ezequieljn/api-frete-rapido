@@ -8,6 +8,7 @@ import { PgPromise } from "./infra/database/pg-promise-adapter";
 import { QueueController } from "./infra/controllers/QuoteController";
 import { MetricsQuote } from "delivery/application/usecase/metrics-quote.use-case";
 import { Config } from "./config/config";
+import { MainController } from "infra/controllers/MainController";
 
 Config.init();
 const httpClient = new AxiosAdapter();
@@ -25,4 +26,5 @@ const getQuote = new GetQuote.UseCase(
 const metricsQuote = new MetricsQuote.UseCase(deliveryRepositoryDatabase);
 
 new QueueController(httpServer, getQuote, metricsQuote);
+new MainController(httpServer);
 httpServer.listen(Config.config().port);
