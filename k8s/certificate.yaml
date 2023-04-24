@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: api-freterapido-ssl-cert
+  namespace: default
+spec:
+  secretName: api-freterapido-ssl-cert
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: freterapido.dok3s.srobot.dev
+  dnsNames:
+    - freterapido.dok3s.srobot.dev

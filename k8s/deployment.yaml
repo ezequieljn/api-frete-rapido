@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freterapido-server
+  labels:
+    app: freterapido-server
+spec:
+  selector:
+    matchLabels:
+      app: freterapido-server
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: "freterapido-server"
+    spec:
+      containers:
+        - name: freterapido-server
+          image: "infectiionz/frete-rapido"
+          envFrom:
+            - secretRef:
+                name: freterapido-secret
+
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: 100Mi
+            limits:
+              cpu: "0.2"
+              memory: 100Mi
+
+          startupProbe:
+            httpGet:
+              path: /
+              port: 3030
+            periodSeconds: 2
+            failureThreshold: 15
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3030
+            periodSeconds: 2
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3030
+            periodSeconds: 5
+            failureThreshold: 1
+            timeoutSeconds: 1
+            successThreshold: 1

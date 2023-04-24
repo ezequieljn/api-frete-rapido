@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: freterapido-ingress-route
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`freterapido.dok3s.srobot.dev`)
+      kind: Rule
+      services:
+        - name: freterapido-service
+          port: 3030
+      middlewares:
+        - name: redirect-scheme-https

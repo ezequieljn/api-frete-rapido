@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: freterapido-route-tls
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`freterapido.dok3s.srobot.dev`)
+      kind: Rule
+      services:
+        - name: freterapido-service
+          port: 3030
+  tls:
+    secretName: api-freterapido-ssl-cert
