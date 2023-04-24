@@ -2,6 +2,16 @@
 
 Este projeto é composto por um backend desenvolvido em **Node.js**, que tem como objetivo realizar consultas de cotação de frete para um determinado **CEP**, considerando alguns **itens**.
 
+### Sobre
+
+O projeto foi construído seguindo algumas boas práticas, como **SOLID** e **Ports and Adapters**, visando o desacoplamento e a criação de testes, como testes de unidade, testes de integração e testes E2E.
+
+A cobertura de testes está acima de **90%** e pode ser verificada por meio do comando.
+
+```bash
+npm run test -- --coverage
+```
+
 ### Pré-requisitos
 
 Antes de executar o projeto, é necessário ter o Docker e o Node.js instalados na máquina.
@@ -33,6 +43,8 @@ Ou crie o arquivo .env manualmente, inserindo as variáveis presentes no arquivo
 ### Utilização
 
 O projeto estará disponível em `http://localhost:3030` localmente.
+
+O projeto também pode ser testado em `https://freterapido.dok3s.srobot.dev`, que está hospedado no servidor K8s.
 
 ##### Rotas HTTP
 
