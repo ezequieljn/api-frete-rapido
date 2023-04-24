@@ -5,6 +5,7 @@ services:
   app:
     container_name: api-frete-rapido
     build: .
+    command: .docker/entrypoint.sh
     ports:
       - 3030:3030
     volumes:

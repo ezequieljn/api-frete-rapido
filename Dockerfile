@@ -1,9 +1,9 @@
-FROM node:16.20.0
+FROM node:16.20.0-slim
 
 WORKDIR /home/app
 
 COPY . /home/app
 
-EXPOSE 3030
+USER node
 
-CMD [ "tail", "-f", "/dev/null" ]
+CMD [ "tail", "-f" , "/dev/null" ]
