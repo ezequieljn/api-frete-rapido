@@ -4,6 +4,7 @@ import { MetricsQuote } from "delivery/application/usecase/metrics-quote.use-cas
 import { ZipcodeValidator } from "../../infra/validator/zipcode.validator";
 import { Response } from "express";
 import { VolumeValidator } from "../../infra/validator/volume.validator";
+import { LastQuotesValidator } from "../../infra/validator/last_quotes.validator";
 
 export class QueueController {
   constructor(
@@ -29,7 +30,13 @@ export class QueueController {
     httpServer.on(
       "get",
       "/metrics",
-      async (params: any, body: any, query: any) => {
+      async (params: any, body: any, query: any, response: Response) => {
+        const lastQuotesValidate = new LastQuotesValidator();
+        lastQuotesValidate.validate(query);
+        if (lastQuotesValidate.errors) {
+          response.status(422).json({ message: lastQuotesValidate.errors });
+          return;
+        }
         return metricsQuote.execute({ last_quotes: query.last_quotes });
       }
     );
