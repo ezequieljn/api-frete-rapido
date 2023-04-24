@@ -80,27 +80,27 @@ Essa rota faz consulta da contação baseado no **CEP** e **Volume**.
 
 **Exemplo de resposta**
 
-```perl
+```json
 {
   "carrier": [
-      {
-    "name": "CORREIOS",
-    "service": "Normal",
-    "deadline": 7,
-    "price": 58.42
-      },
-      {
-    "name": "EXPRESSO FR (TESTE)",
-    "service": "Normal",
-    "deadline": 7,
-    "price": 98.11
-      },
-      {
-    "name": "RAPIDÃO FR (TESTE)",
-    "service": "Normal",
-    "deadline": 7,
-    "price": 114.23
-      }
+    {
+      "name": "CORREIOS",
+      "service": "Normal",
+      "deadline": 7,
+      "price": 58.42
+    },
+    {
+      "name": "EXPRESSO FR (TESTE)",
+      "service": "Normal",
+      "deadline": 7,
+      "price": 98.11
+    },
+    {
+      "name": "RAPIDÃO FR (TESTE)",
+      "service": "Normal",
+      "deadline": 7,
+      "price": 114.23
+    }
   ]
 }
 ```
@@ -112,44 +112,42 @@ O parâmetro '**last_quotes**' é opcional e tem a responsabilidade de filtrar a
 
 **Exemplo de resposta**
 
-```perl
-
+```json
 {
-	"totalAndMediaPrice": [
-		{
-			"shipping_company": "CORREIOS",
-			"total_price": 233.68,
-			"average_price": 58.42
-		},
-		{
-			"shipping_company": "EXPRESSO FR (TESTE)",
-			"total_price": 392.44,
-			"average_price": 98.11
-		},
-		{
-			"shipping_company": "RAPIDÃO FR (TESTE)",
-			"total_price": 456.92,
-			"average_price": 114.23
-		}
-	],
-	"lowestHighestPrice": {
-		"lowest": 58.42,
-		"highest": 114.23
-	},
-	"amountCarrier": [
-		{
-			"shipping_company": "CORREIOS",
-			"amount": "4"
-		},
-		{
-			"shipping_company": "EXPRESSO FR (TESTE)",
-			"amount": "4"
-		},
-		{
-			"shipping_company": "RAPIDÃO FR (TESTE)",
-			"amount": "4"
-		}
-	]
+  "totalAndMediaPrice": [
+    {
+      "shipping_company": "CORREIOS",
+      "total_price": 233.68,
+      "average_price": 58.42
+    },
+    {
+      "shipping_company": "EXPRESSO FR (TESTE)",
+      "total_price": 392.44,
+      "average_price": 98.11
+    },
+    {
+      "shipping_company": "RAPIDÃO FR (TESTE)",
+      "total_price": 456.92,
+      "average_price": 114.23
+    }
+  ],
+  "lowestHighestPrice": {
+    "lowest": 58.42,
+    "highest": 114.23
+  },
+  "amountCarrier": [
+    {
+      "shipping_company": "CORREIOS",
+      "amount": "4"
+    },
+    {
+      "shipping_company": "EXPRESSO FR (TESTE)",
+      "amount": "4"
+    },
+    {
+      "shipping_company": "RAPIDÃO FR (TESTE)",
+      "amount": "4"
+    }
+  ]
 }
-
 ```
