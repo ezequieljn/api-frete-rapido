@@ -1,0 +1,29 @@
+POST http://localhost:3030/quote
+Content-Type: application/json
+
+{
+   "recipient":{
+      "address":{
+         "zipcode":"39400200"
+      }
+   },
+   "volumes":[
+      {
+         "category":7,
+         "amount":2,
+         "unitary_weight":4,
+         "price":556,
+         "sku":"abc-teste-527",
+         "height":0.4,
+         "width":0.6,
+         "length":0.15
+      }
+   ]
+}
+
+### Request metrics
+GET http://localhost:3030/metrics
+
+
+### Request last quotes metrics
+GET http://localhost:3030/metrics?last_quotes=1
